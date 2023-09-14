@@ -1,6 +1,6 @@
 $scriptPath = Get-Location
 $excelFileName = "FixData.xlsm"
-$excelFunctionName = "OutputCharaFixData"
+$excelFunctionName = "OutputItemFixData"
 $excelPath = Join-Path $scriptPath $excelFileName
 if(Test-Path $excelPath){
     $writeString = $excelFileName + "の関数" + $excelFunctionName + "を呼び出しています."
@@ -33,7 +33,7 @@ if(Test-Path $excelPath){
     }
 
     #成果物をutf-8に変換する.
-    $sourceFileName = "CharaFixData.csv"
+    $sourceFileName = "ItemFixData.csv"
     $sourcePath = Join-Path $scriptPath $sourceFileName
     $allText = Get-Content $sourcePath -Encoding default
     Write-Output $allText | Out-File $sourcePath -Encoding UTF8
@@ -48,7 +48,7 @@ if(Test-Path $excelPath){
         Write-Output $writeString
     }else{
         $writeString = $destPath + "がありません. ERROR!!!!!"
-        Write-Error $writeSt
+        Write-Error $writeString
         Read-Host "Enterキーで終了"
     }
     
